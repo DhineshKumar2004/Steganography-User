@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography with Encryption</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="html-docx.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.22.0/docxtemplater.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+
+
+</head>
+<body>
+    <div class="selection">
+        <h1>Steganography Tool</h1>
+        <h1>Select Your Mode</h1>
+        <select name="mode" id="mode" onchange="toggleModeFields()">
+            <option value="#">Select here</option>
+            <option value="encode">ENCODE</option>
+            <option value="decode">DECODE</option>
+        </select>
+    </div> 
+    <div class="container" id="container">
+        <div id="encode">
+            
+        <!-- Encoding Section -->
+            <h2>Encode</h2>
+
+            <label for="inputType">Select Input Type:</label>
+            <select id="inputType" id="inputType" name="inputType" onchange="toggleInputFields()">
+                <option value="#">Select Input Type</option>
+                <option value="plainText">Plain Text</option>
+                <option value="docx">DOCX File</option>
+                <option value="pdf">PDF File</option>
+            </select>
+
+
+            <textarea id="messageToEncode" placeholder="Enter message to encode" style="display:none;"></textarea>
+
+            <input type="file" id="docxFile" accept=".docx" style="display:none;">
+
+            <input type="file" id="pdfFile" accept=".pdf" style="display:none;">
+
+            <label for="imageToEncode">Input Image File</label>
+            <input type="file" id="imageToEncode" name="imageToEncode" accept="image/*">
+
+            <button id="btn-encode">Encode Message</button>
+        </div>
+
+        <div id="decode">
+
+            <!-- Decoding Section -->
+            <h2>Decode</h2>
+            
+            <input type="file" id="imageToDecode" accept="image/*">
+            
+            <button id="btn-decode">Decode Message</button>
+
+            <!-- Output Section -->
+            <h2>Output</h2>
+            <textarea id="output" placeholder="Output will be shown here" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function toggleInputFields() {
+            var inputType = document.getElementById("inputType").value;
+            
+            document.getElementById("messageToEncode").style.display = "none";
+            document.getElementById("docxFile").style.display = "none";
+            document.getElementById("pdfFile").style.display = "none";
+            
+            if (inputType === "plainText") {
+                document.getElementById("messageToEncode").style.display = "block";
+            } else if (inputType === "docx") {
+                document.getElementById("docxFile").style.display = "block";
+            } else if (inputType === "pdf") {
+                document.getElementById("pdfFile").style.display = "block";
+            }
+        }
+        function toggleModeFields(){
+            var modeType = document.getElementById("mode").value;
+            document.getElementById("container").style.display = "none";
+            document.getElementById("encode").style.display = "none";
+            document.getElementById("decode").style.display = "none";
+            if(modeType === "encode"){
+                document.getElementById("container").style.display = "block";
+                document.getElementById("encode").style.display = "block";
+            }
+            else if(modeType === "decode"){
+                document.getElementById("container").style.display = "block";
+                document.getElementById("decode").style.display = "block";
+            }
+        }
+    </script>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <script>
+        // Specify the workerSrc property
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
+    </script>
+
+    <script src="encode.js"></script>
+    <script src="decode.js"></script>
+</body>
+</html>

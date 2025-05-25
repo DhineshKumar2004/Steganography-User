@@ -1,0 +1,112 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(215, 151, 151);
+    /* background-image: url("1677328650374.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: animate 2s ease-in-out infinite;
+    position: relative;
+    text-align: center;
+    
+}
+
+
+/* @keyframes animate {
+    0%{
+        background-size: 100%;
+    }
+    50%{
+        background-size: 500%;
+    }
+    100%{
+        background-size: 100%;
+    }
+} */
+
+.container {
+    position: absolute;
+    top: 30%;
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+#container{
+    display: none;
+}
+
+.selection{
+    position: absolute;
+    top: 0;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+h2 {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+textarea, input[type="file"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.output {
+    margin-top: 30px;
+    text-align: left;
+}
+
+textarea[readonly] {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}
