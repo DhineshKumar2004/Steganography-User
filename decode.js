@@ -205,12 +205,8 @@ function downloadDocxFile(message) {
 
 // Function to download the message as a PDF
 function downloadPdfFile(message) {
-    // Check if jsPDF library is available
-    if (typeof jsPDF === 'undefined') {
-        alert("Error: 'jsPDF' library is not loaded. Please check your script import.");
-        return;
-    }
-
+    
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     const lines = doc.splitTextToSize(message, 180);
     let y = 10;
